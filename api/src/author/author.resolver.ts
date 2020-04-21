@@ -21,8 +21,8 @@ export class AuthorResolver {
 
   @Query(returns => [AuthorType],{nullable: 'items'})
   async getAuthors(
-    @Args('minNumberOfBooks',{nullable:true, defaultValue: null, type: () => Int}) minNumberOfBooks?: number, 
-    @Args('maxNumberOfBooks',{nullable:true, defaultValue: null, type: () => Int}) maxNumberOfBooks?: number, 
+    @Args('minNumberOfBooks',{nullable:true, type: () => Int}) minNumberOfBooks?: number, 
+    @Args('maxNumberOfBooks',{nullable:true, type: () => Int}) maxNumberOfBooks?: number, 
   ) {
     return await this.authorService.getAuthors({
       minNumberOfBooks: minNumberOfBooks || 0, 

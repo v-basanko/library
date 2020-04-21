@@ -24,7 +24,7 @@ export class BookResolver {
 
   @Query(returns => [BookType], {nullable: true})
   async getBooks(
-    @Args('title',{nullable:true, defaultValue: null}) title:string
+    @Args('title',{nullable:true}) title:string
   ) {
     return await this.bookService.getBooks(title || '');
   }
