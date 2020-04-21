@@ -14,15 +14,15 @@ export class AuthorResolver {
 
   @Query(returns => AuthorType, {nullable: true})
   async getAuthor(
-    @Args('id') id:number
+    @Args('id', {type: () => Int}) id:number
   ) {
     return await this.authorService.getAuthor(id);
   }
 
   @Query(returns => [AuthorType],{nullable: 'items'})
   async getAuthors(
-    @Args('minNumberOfBooks',{nullable:true, defaultValue: null}) minNumberOfBooks?: number, 
-    @Args('maxNumberOfBooks',{nullable:true, defaultValue: null}) maxNumberOfBooks?: number, 
+    @Args('minNumberOfBooks',{nullable:true, defaultValue: null, type: () => Int}) minNumberOfBooks?: number, 
+    @Args('maxNumberOfBooks',{nullable:true, defaultValue: null, type: () => Int}) maxNumberOfBooks?: number, 
   ) {
     return await this.authorService.getAuthors({
       minNumberOfBooks: minNumberOfBooks || 0, 
@@ -39,14 +39,14 @@ export class AuthorResolver {
 
   @Mutation(returns => Int)
   async deleteAuthor(
-    @Args('id') id: number, 
+    @Args('id', {type: () => Int}) id: number, 
   ):Promise<number> {
     return await this.authorService.deleteAuthor(id);
   }
 
   @Mutation(returns => Int)
   async deleteAuthorWithBooks(
-    @Args('id') id: number, 
+    @Args('id', {type: () => Int}) id: number, 
   ):Promise<number> {
     return await this.authorService.deleteAuthorWithBooks(id);
   }

@@ -17,7 +17,7 @@ export class BookResolver {
 
   @Query(returns => BookType, {nullable: true})
   async getBook(
-    @Args('id') id:number
+    @Args('id', {type: () => Int}) id:number
   ) {
     return await this.bookService.getBook(id);
   }
@@ -42,8 +42,8 @@ export class BookResolver {
 
   @Mutation(returns => BookType)
   async addAuthor(
-  @Args('bookId') bookId: number,
-  @Args('authorId') authorId: number 
+  @Args('bookId', {type: () => Int}) bookId: number,
+  @Args('authorId', {type: () => Int}) authorId: number 
   ):Promise<Book> {
     if(!bookId || !authorId) throw new BadRequestException('Book ID and AuthorId is required');
     const book = await this.bookService.getBook(bookId);
@@ -58,7 +58,7 @@ export class BookResolver {
 
   @Mutation(returns => Int)
   async deleteBook(
-    @Args('id') id: number, 
+    @Args('id', {type: () => Int}) id: number, 
   ):Promise<number> {
     return await this.bookService.deleteBook(id);
   }
