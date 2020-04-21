@@ -1,0 +1,46 @@
+version: '2.0'
+
+services:
+  api:
+    build:
+      context: ./api/.
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+    environment:
+      HTTP_PORT: 5000
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: library
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    ports:
+      - 5000:5000
+    volumes:
+      - ./api/:/api
+      - /api/node_modules
+    command: wait-for-it mysql:3306 -t 160 -- npm start
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: library
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 6000:3306
+    command: --default-authentication-plugin=mysql_native_password
+  
+  #adminer:
+  #  image: adminer
+  #  restart: always
+  #  ports:
+  #    - 8080:8080
+    
+volumes:
+  mysql-data:
+    driver: local
