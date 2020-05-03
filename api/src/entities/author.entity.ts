@@ -1,5 +1,5 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
-import { Book } from "src/book/book.entity";
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToMany } from "typeorm";
+import { Book } from "./book.entity";
 
 @Entity()
 export class Author extends BaseEntity {

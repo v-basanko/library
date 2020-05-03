@@ -1,15 +1,17 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToMany } from "typeorm";
-import { Author } from "src/author/author.entity";
+import { Author } from "./author.entity";
 
 @Entity()
 export class Book extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id:number
+    id:string
 
     @Column()
     title:string;
 
-    @ManyToMany(type => Author, author => author.books)
+    @ManyToMany(type => Author, author => author.books,{
+        eager: true
+    })
     @JoinTable()
     authors:Array<Author>
 }

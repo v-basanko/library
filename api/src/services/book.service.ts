@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Book } from './book.entity';
-import { BookRepository } from './book.repository';
-import { Author } from 'src/author/author.entity';
+import { Book, Author } from 'src/entities';
+import { BookRepository } from 'src/repositories';
 
 @Injectable()
 export class BookService {
@@ -11,7 +10,7 @@ export class BookService {
     ){}
 
     async getBook(id: number):Promise<Book | null> {
-        return await this.bookRepository.getBook(id);
+        return await this.bookRepository.findOne(id);
     }
 
     async getBooks(title:string):Promise<Book[]> {

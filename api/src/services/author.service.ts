@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Author } from './author.entity';
-import { AuthorRepository } from './author.repository';
-import { AuthorInput } from './author.input';
+import { Author } from 'src/entities';
+import { AuthorRepository } from 'src/repositories';
+import { AuthorInput } from 'src/inputs';
 
 @Injectable()
 export class AuthorService {

@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AuthorModule } from './author/author.module';
-import { BookModule } from './book/book.module';
+import { AuthorModule, BookModule } from './modules';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { typeOrmConfig } from './config/typeorm.config';

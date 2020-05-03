@@ -1,6 +1,5 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { Author } from 'src/author/author.entity';
-import { Book } from 'src/book/book.entity';
+import { Author, Book } from 'src/entities';
 
 export const typeOrmConfig:TypeOrmModuleOptions = {
     type: 'mysql',

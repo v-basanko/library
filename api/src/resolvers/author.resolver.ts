@@ -1,9 +1,8 @@
-import { Resolver, Query, Mutation, Args, ID, Int } from "@nestjs/graphql";
-import { AuthorType } from './author.type';
-import { AuthorInput } from "./author.input";
-import { AuthorService } from "./author.service";
-import { Author } from "./author.entity";
-import { ParseIntPipe } from "@nestjs/common";
+import { Resolver, Query, Mutation, Args, Int } from "@nestjs/graphql";
+import { AuthorType } from 'src/types';
+import { AuthorInput } from "src/inputs";
+import { AuthorService } from "src/services";
+import { Author } from "src/entities";
 
 @Resolver(of => AuthorType)
 export class AuthorResolver {

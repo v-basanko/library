@@ -1,10 +1,8 @@
 import { Module } from '@nestjs/common';
-import { BookService } from './book.service';
-import { BookResolver } from './book.resolver';
+import { BookService, AuthorService } from 'src/services';
+import { BookResolver } from 'src/resolvers';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BookRepository } from './book.repository';
-import { AuthorService } from 'src/author/author.service';
-import { AuthorRepository } from 'src/author/author.repository';
+import { BookRepository, AuthorRepository } from 'src/repositories';
 
 @Module({
   imports: [TypeOrmModule.forFeature([

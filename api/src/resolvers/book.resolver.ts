@@ -1,9 +1,8 @@
 import { Resolver, Query, Mutation, Args, ID, Int } from "@nestjs/graphql";
-import { BookType } from "./book.type";
-import { BookService } from "./book.service";
-import { BookInput } from "./book.input";
-import { Book } from "./book.entity";
-import { AuthorService } from "src/author/author.service";
+import { BookType } from "src/types";
+import { BookService, AuthorService } from "src/services";
+import { BookInput } from "src/inputs";
+import { Book } from "src/entities";
 import { NotFoundException, BadRequestException } from "@nestjs/common";
 
 
